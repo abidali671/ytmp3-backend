@@ -7,7 +7,6 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const requestIp = require("request-ip");
 const tempDir = path.join(__dirname, "temp");
-const geoip = require("geoip-lite");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const userController = require("./controller/user.controller");
@@ -48,10 +47,6 @@ app.use(cors({ origin: "*" }));
 const PORT = 9015;
 
 app.use((req, res, next) => {
-  const ip = req.clientIp;
-  const geo = geoip.lookup(ip);
-  const country = geo ? geo.country : "Unknown";
-  req.clientCountry = country;
   next();
 });
 
