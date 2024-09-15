@@ -101,6 +101,7 @@ async function getVideoInfo(videoId) {
     title: info?.basic_info?.title,
     thumbnail: getHighestThumbnail(info?.basic_info.thumbnail),
     duration: formatDuration(info?.basic_info.duration),
+  info
   };
 
   return formatInfo;
